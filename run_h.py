@@ -87,10 +87,10 @@ if __name__ == "__main__":
     if args.comment is not None:
         logger.info(args.comment + "\n")
 
-    # model = StackedTransformer(response_size=47, treatment_size=2)
+    model = StackedTransformer(response_size=47, treatment_size=2)
     
     # model=Informer( enc_in=49, dec_in=49, c_out=49)
-    model=Transformer()
+    # model=Transformer()
     if Test==True:
         test(test_iterator, model, args.mask, window=12, logger=logger,
                            model_save_path=os.path.join(model_path, "model.pt"), response_size=47, treatment_size=2, device=device)    
