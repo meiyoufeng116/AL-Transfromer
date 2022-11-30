@@ -87,17 +87,18 @@ if __name__ == "__main__":
     if args.comment is not None:
         logger.info(args.comment + "\n")
 
-    # model = StackedTransformer(response_size=47, treatment_size=2)
+    model = StackedTransformer(response_size=47, treatment_size=2)
     
-    model=Informer( enc_in=49, dec_in=49, c_out=49)
+    # model=Informer( enc_in=49, dec_in=49, c_out=49)
     # model=Transformer()
+    
     if Test==True:
         test(test_iterator, model, args.mask, window=12, logger=logger,
                            model_save_path=os.path.join(model_path, "model.pt"), response_size=47, treatment_size=2, device=device)    
         sys.exit()
 
-    # train_stacked_lstm_cnn(args.epoch, train_iterator,vaild_iterator,test_iterator, model, args.mask, window=12, logger=logger,
-    #                        model_save_path=os.path.join(model_path, "model.pt"), response_size=47, treatment_size=2, device=device)
+    train_stacked_lstm_cnn(args.epoch, train_iterator,vaild_iterator,test_iterator, model, args.mask, window=12, logger=logger,
+                           model_save_path=os.path.join(model_path, "model.pt"), response_size=47, treatment_size=2, device=device)
 
     # simulation( test_iterator,vaild_iterator, model, args.mask, window=12, logger=logger,
     #                        model_save_path=os.path.join(model_path, "model.pt"), response_size=47, treatment_size=2, device=device)
@@ -107,5 +108,5 @@ if __name__ == "__main__":
     # train_informer(args.epoch, train_iterator,vaild_iterator,test_iterator, model, args.mask, window=12, logger=logger,
     #                        model_save_path=os.path.join(model_path, "Informer_model.pt"), response_size=47, treatment_size=2, device=device)
     # #
-    simulation_transformer( test_iterator,vaild_iterator, model, args.mask, window=12, logger=logger,
-                            model_save_path=os.path.join(model_path, "model.pt"), response_size=47, treatment_size=2, device=device)
+    # simulation_transformer( test_iterator,vaild_iterator, model, args.mask, window=12, logger=logger,
+    #                         model_save_path=os.path.join(model_path, "model.pt"), response_size=47, treatment_size=2, device=device)
